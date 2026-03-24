@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { shopMenu } from "@/data/menu";
+import Userinfo from "@/components/shop/auth/userInfo";
 
 const Header = () => {
   return (
@@ -25,12 +28,7 @@ const Header = () => {
 
         {/* Actions */}
         <div className="flex items-center gap-4">
-          <Link
-            href="/register"
-            className="bg-white text-green-800 px-4 py-1 rounded font-semibold hover:bg-yellow-300"
-          >
-            Đăng ký
-          </Link>
+          <Userinfo />
 
           <Link
             href="/cart"

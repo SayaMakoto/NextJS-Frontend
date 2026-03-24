@@ -1,3 +1,44 @@
-export default function Page() {
-  return <h1>Create Product Page</h1>;
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { createProduct } from "@/services/productService";
+import CreateProduct from "@/components/admin/product/createProduct";
+
+export default function CreateProductPage() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  const handleCreate = async (form) => {
+    try {
+      setLoading(true);
+
+      await createProduct({
+        ...form,
+        price: Number(form.price),
+        sale_price: Number(form.sale_price),
+        cat_id: Number(form.cat_id),
+        brand_id: Number(form.brand_id),
+        view: Number(form.view),
+      });
+
+      alert("Thêm thành công");
+      router.push("/admin/products");
+    } catch (err) {
+      console.error(err);
+      alert("Có lỗi xảy ra");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex justify-center mt-10">
+      <div className="w-full max-w-2xl bg-white p-6 rounded-xl shadow">
+        <h1 className="text-xl font-bold mb-6 text-center">Thêm sản phẩm</h1>
+
+        <CreateProduct onSubmit={handleCreate} loading={loading} />
+      </div>
+    </div>
+  );
 }

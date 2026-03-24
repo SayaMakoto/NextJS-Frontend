@@ -27,3 +27,17 @@ export const validateRegister = ({
   }
   return errors;
 };
+
+export const validateLogin = ({ username, pass }) => {
+  const errors = {};
+
+  if (!username) {
+    errors.username = "Username không được để trống";
+  }
+
+  if (!pass) {
+    errors.pass = "Mật khẩu không được để trống";
+  }
+
+  return errors;
+};

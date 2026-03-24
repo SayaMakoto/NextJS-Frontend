@@ -7,10 +7,13 @@ export const register = async (data) => {
 
 export const login = async (data) => {
   let res = await axiosInstance.post("/auth/login", data);
-  let { token, user } = res.data;
-  localStorage.setItem("token", token);
+
+  const { user, token } = res.data;
+
   localStorage.setItem("user", JSON.stringify(user));
-  return res.data;
+  localStorage.setItem("token", token);
+
+  return { user, token };
 };
 
 export const me = async () => {
