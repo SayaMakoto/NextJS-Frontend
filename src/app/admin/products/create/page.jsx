@@ -3,7 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createProduct } from "@/services/productService";
-import CreateProduct from "@/components/admin/product/createProduct";
+import CreateProduct from "@/components/admin/product/CreateProduct";
+import BackButton from "@/components/common/BackButton";
 
 export default function CreateProductPage() {
   const router = useRouter();
@@ -35,7 +36,10 @@ export default function CreateProductPage() {
   return (
     <div className="flex justify-center mt-10">
       <div className="w-full max-w-2xl bg-white p-6 rounded-xl shadow">
-        <h1 className="text-xl font-bold mb-6 text-center">Thêm sản phẩm</h1>
+        <div className="flex items-center justify-between mb-6">
+          <BackButton />
+          <h1 className="text-xl font-bold">Thêm sản phẩm</h1>
+        </div>
 
         <CreateProduct onSubmit={handleCreate} loading={loading} />
       </div>

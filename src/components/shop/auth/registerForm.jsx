@@ -145,12 +145,6 @@ const RegisterForm = () => {
           {errors.message && (
             <p className="text-red-500 text-sm text-center">{errors.message}</p>
           )}
-          <p className="text-center mt-4 text-gray-600">
-            Đã có tài khoản?{" "}
-            <Link href="/login" className="text-green-500 hover:text-green-600">
-              Đăng nhập
-            </Link>
-          </p>
         </form>
       </div>
     </div>

@@ -1,34 +1,21 @@
 "use client";
 
-import { useState } from "react";
 import CategorySelect from "../select/CategorySelect";
 import BrandSelect from "../select/BrandSelect";
 
-export default function CreateProduct({ onSubmit, loading }) {
-  const [formData, setForm] = useState({
-    product_name: "",
-    alias: "",
-    cat_id: "",
-    brand_id: "",
-    detail: "",
-    price: "",
-    image: "",
-    sale_price: "",
-    summary: "",
-    tag: "",
-    launch_date: "",
-    status: 1,
-    trash: 0,
-    view: 0,
-  });
-
+export default function UpdateProductForm({
+  formData,
+  setFormData,
+  onSubmit,
+  loading,
+}) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setForm({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -36,11 +23,12 @@ export default function CreateProduct({ onSubmit, loading }) {
     onSubmit(formData);
   };
 
+  if (!formData) return null;
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <input
         name="product_name"
-        placeholder="Tên sản phẩm"
         value={formData.product_name}
         onChange={handleChange}
         className="w-full border p-2 rounded"
@@ -48,7 +36,6 @@ export default function CreateProduct({ onSubmit, loading }) {
 
       <input
         name="alias"
-        placeholder="Alias"
         value={formData.alias}
         onChange={handleChange}
         className="w-full border p-2 rounded"
@@ -68,7 +55,6 @@ export default function CreateProduct({ onSubmit, loading }) {
 
       <textarea
         name="detail"
-        placeholder="Chi tiết"
         value={formData.detail}
         onChange={handleChange}
         className="w-full border p-2 rounded"
@@ -76,7 +62,6 @@ export default function CreateProduct({ onSubmit, loading }) {
 
       <input
         name="price"
-        placeholder="Giá"
         value={formData.price}
         onChange={handleChange}
         className="w-full border p-2 rounded"
@@ -84,7 +69,6 @@ export default function CreateProduct({ onSubmit, loading }) {
 
       <input
         name="sale_price"
-        placeholder="Giá giảm"
         value={formData.sale_price}
         onChange={handleChange}
         className="w-full border p-2 rounded"
@@ -92,7 +76,6 @@ export default function CreateProduct({ onSubmit, loading }) {
 
       <input
         name="image"
-        placeholder="Link ảnh"
         value={formData.image}
         onChange={handleChange}
         className="w-full border p-2 rounded"
@@ -100,7 +83,6 @@ export default function CreateProduct({ onSubmit, loading }) {
 
       <input
         name="summary"
-        placeholder="Mô tả ngắn"
         value={formData.summary}
         onChange={handleChange}
         className="w-full border p-2 rounded"
@@ -108,7 +90,6 @@ export default function CreateProduct({ onSubmit, loading }) {
 
       <input
         name="tag"
-        placeholder="Tag"
         value={formData.tag}
         onChange={handleChange}
         className="w-full border p-2 rounded"
@@ -135,9 +116,9 @@ export default function CreateProduct({ onSubmit, loading }) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-green-600 text-white py-2 rounded"
+        className="w-full bg-blue-600 text-white py-2 rounded"
       >
-        {loading ? "Đang thêm..." : "Thêm sản phẩm"}
+        {loading ? "Đang cập nhật..." : "Cập nhật sản phẩm"}
       </button>
     </form>
   );

@@ -21,22 +21,26 @@ export const updateProduct = async (id, data) => {
   const res = await axiosInstance.put(`/products/${id}`, data);
   return res.data;
 };
+
 export const delProduct = async (id) => {
   const res = await axiosInstance.delete(`/products/${id}`);
   return res.data;
 };
+
 export const getNewProducts = async (limit = 10) => {
   const res = await axiosInstance.get("/products/new", {
     params: { limit },
   });
   return res.data;
 };
+
 export const getBestSellerProducts = async (limit = 5) => {
   const res = await axiosInstance.get("/products/bestseller", {
     params: { limit },
   });
   return res.data;
 };
+
 export const getRelatedProducts = async (id, limit = 5) => {
   const res = await axiosInstance.get(`/products/related/${id}`, {
     params: { limit },

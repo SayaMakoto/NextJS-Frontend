@@ -90,6 +90,15 @@ const LoginForm = () => {
             </Link>
           </p>
         </form>
+        <p className="text-center mt-4 text-gray-600">
+          Chưa có tài khoản?{" "}
+          <Link
+            href="/register"
+            className="text-green-500 hover:text-green-600"
+          >
+            Đăng ký
+          </Link>
+        </p>
       </div>
     </div>
   );
