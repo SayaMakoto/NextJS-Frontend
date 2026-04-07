@@ -27,6 +27,7 @@ export default function UpdateProductForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <label>Tên sản phẩm</label>
       <input
         name="product_name"
         value={formData.product_name}
@@ -34,6 +35,7 @@ export default function UpdateProductForm({
         className="w-full border p-2 rounded"
       />
 
+      <label>Alias</label>
       <input
         name="alias"
         value={formData.alias}
@@ -41,18 +43,21 @@ export default function UpdateProductForm({
         className="w-full border p-2 rounded"
       />
 
+      <label>Danh mục</label>
       <CategorySelect
         name="cat_id"
         value={formData.cat_id}
         onChange={handleChange}
       />
 
+      <label>Thương hiệu</label>
       <BrandSelect
         name="brand_id"
         value={formData.brand_id}
         onChange={handleChange}
       />
 
+      <label>Chi tiết sản phẩm</label>
       <textarea
         name="detail"
         value={formData.detail}
@@ -60,6 +65,7 @@ export default function UpdateProductForm({
         className="w-full border p-2 rounded"
       />
 
+      <label>Giá</label>
       <input
         name="price"
         value={formData.price}
@@ -67,6 +73,7 @@ export default function UpdateProductForm({
         className="w-full border p-2 rounded"
       />
 
+      <label>Giá giảm</label>
       <input
         name="sale_price"
         value={formData.sale_price}
@@ -74,6 +81,7 @@ export default function UpdateProductForm({
         className="w-full border p-2 rounded"
       />
 
+      <label>Link ảnh</label>
       <input
         name="image"
         value={formData.image}
@@ -81,6 +89,7 @@ export default function UpdateProductForm({
         className="w-full border p-2 rounded"
       />
 
+      <label>Mô tả ngắn</label>
       <input
         name="summary"
         value={formData.summary}
@@ -88,6 +97,7 @@ export default function UpdateProductForm({
         className="w-full border p-2 rounded"
       />
 
+      <label>Tag</label>
       <input
         name="tag"
         value={formData.tag}
@@ -95,6 +105,7 @@ export default function UpdateProductForm({
         className="w-full border p-2 rounded"
       />
 
+      <label>Ngày ra mắt</label>
       <input
         type="datetime-local"
         name="launch_date"
@@ -103,6 +114,7 @@ export default function UpdateProductForm({
         className="w-full border p-2 rounded"
       />
 
+      <label>Trạng thái</label>
       <select
         name="status"
         value={formData.status}

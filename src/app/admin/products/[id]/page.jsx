@@ -30,7 +30,9 @@ export default function UpdateProductPage() {
           price: data.price,
           sale_price: data.sale_price,
           image: data.image,
-          launch_date: data.launch_date,
+          launch_date: data.launch_date
+            ? new Date(data.launch_date).toISOString().slice(0, 16)
+            : "",
           tag: data.tag,
           summary: data.summary,
           status: data.status,

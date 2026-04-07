@@ -38,6 +38,7 @@ export default function CreateProduct({ onSubmit, loading }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <label>Tên sản phẩm</label>
       <input
         name="product_name"
         placeholder="Tên sản phẩm"
@@ -46,6 +47,7 @@ export default function CreateProduct({ onSubmit, loading }) {
         className="w-full border p-2 rounded"
       />
 
+      <label>Alias</label>
       <input
         name="alias"
         placeholder="Alias"
@@ -54,18 +56,21 @@ export default function CreateProduct({ onSubmit, loading }) {
         className="w-full border p-2 rounded"
       />
 
+      <label>Danh mục</label>
       <CategorySelect
         name="cat_id"
         value={formData.cat_id}
         onChange={handleChange}
       />
 
+      <label>Thương hiệu</label>
       <BrandSelect
         name="brand_id"
         value={formData.brand_id}
         onChange={handleChange}
       />
 
+      <label>Chi tiết sản phẩm</label>
       <textarea
         name="detail"
         placeholder="Chi tiết"
@@ -74,6 +79,7 @@ export default function CreateProduct({ onSubmit, loading }) {
         className="w-full border p-2 rounded"
       />
 
+      <label>Giá</label>
       <input
         name="price"
         placeholder="Giá"
@@ -82,6 +88,7 @@ export default function CreateProduct({ onSubmit, loading }) {
         className="w-full border p-2 rounded"
       />
 
+      <label>Giá giảm</label>
       <input
         name="sale_price"
         placeholder="Giá giảm"
@@ -90,6 +97,7 @@ export default function CreateProduct({ onSubmit, loading }) {
         className="w-full border p-2 rounded"
       />
 
+      <label>Link ảnh</label>
       <input
         name="image"
         placeholder="Link ảnh"
@@ -98,6 +106,7 @@ export default function CreateProduct({ onSubmit, loading }) {
         className="w-full border p-2 rounded"
       />
 
+      <label>Mô tả ngắn</label>
       <input
         name="summary"
         placeholder="Mô tả ngắn"
@@ -106,6 +115,7 @@ export default function CreateProduct({ onSubmit, loading }) {
         className="w-full border p-2 rounded"
       />
 
+      <label>Tag</label>
       <input
         name="tag"
         placeholder="Tag"
@@ -114,6 +124,7 @@ export default function CreateProduct({ onSubmit, loading }) {
         className="w-full border p-2 rounded"
       />
 
+      <label>Ngày ra mắt</label>
       <input
         type="datetime-local"
         name="launch_date"
@@ -122,6 +133,7 @@ export default function CreateProduct({ onSubmit, loading }) {
         className="w-full border p-2 rounded"
       />
 
+      <label>Trạng thái</label>
       <select
         name="status"
         value={formData.status}

@@ -5,29 +5,35 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getProducts, delProduct } from "@/services/productService";
 import AdminTable from "@/components/admin/table/AdminTable";
+import Pagination from "@/components/common/Pagination";
 
 export default function Page() {
   const router = useRouter();
-
   const [products, setProducts] = useState([]);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
 
+  const [totalPages, setTotalPages] = useState(1);
+  const [params, setParams] = useState({
+    page: 1,
+    limit: 10,
+  });
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await getProducts({ trash: 0 });
-        setProducts(res.data || res);
+        const res = await getProducts(params);
+
+        setProducts(res.data);
+        setTotalPages(res.totalPage);
       } catch (err) {
         console.error("Lỗi load sản phẩm:", err);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchProducts();
-  }, []);
+  }, [params]);
 
   const handleEdit = (product) => {
     router.push(`/admin/products/${product.product_id}`);
@@ -46,9 +52,14 @@ export default function Page() {
 
       await delProduct(product.product_id);
 
-      setProducts((prev) =>
-        prev.filter((item) => item.product_id !== product.product_id),
-      );
+      if (products.length === 1 && params.page > 1) {
+        setParams((prev) => ({
+          ...prev,
+          page: prev.page - 1,
+        }));
+      } else {
+        setParams((prev) => ({ ...prev }));
+      }
 
       setSuccess("Xóa sản phẩm thành công!");
     } catch (error) {
@@ -59,7 +70,7 @@ export default function Page() {
       setLoading(false);
     }
   };
-
+  console.log(params);
   const columns = [
     { key: "product_id", label: "ID" },
     { key: "product_name", label: "Tên sản phẩm" },
@@ -100,6 +111,11 @@ export default function Page() {
         loading={loading}
         onEdit={handleEdit}
         onDelete={handleDelete}
+      />
+      <Pagination
+        totalPages={totalPages}
+        params={params}
+        onChangeParams={setParams}
       />
     </div>
   );
