@@ -32,7 +32,7 @@ export default function OrderDetailPage() {
     try {
       const newStatus = order.status === 1 ? 0 : 1;
 
-      await updateOrderStatus(order.oder_id, {
+      await updateOrderStatus(order.order_id, {
         status: newStatus,
       });
 
@@ -55,7 +55,7 @@ export default function OrderDetailPage() {
         ← Quay lại
       </button>
 
-      <h2 className="text-2xl font-bold mb-4">🧾 Đơn hàng #{order.oder_id}</h2>
+      <h2 className="text-2xl font-bold mb-4">🧾 Đơn hàng #{order.order_id}</h2>
 
       {message && (
         <div className="mb-4 text-green-600 font-medium">{message}</div>
@@ -88,7 +88,7 @@ export default function OrderDetailPage() {
         <div className="space-y-3">
           {order.order_details?.map((item) => (
             <div
-              key={item.oder_detail_id}
+              key={item.order_detail_id}
               className="flex items-center gap-4 border rounded p-3"
             >
               <img

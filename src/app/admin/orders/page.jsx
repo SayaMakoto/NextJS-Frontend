@@ -28,7 +28,7 @@ export default function OrderPage() {
   }, []);
 
   const handleView = (order) => {
-    router.push(`/admin/orders/${order.oder_id}`);
+    router.push(`/admin/orders/${order.order_id}`);
   };
 
   const columns = [
@@ -76,7 +76,7 @@ export default function OrderPage() {
         columns={columns}
         data={orders}
         loading={loading}
-        rowKey="oder_id"
+        rowKey="order_id"
       />
     </div>
   );
