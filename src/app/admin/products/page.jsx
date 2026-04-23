@@ -111,6 +111,7 @@ export default function Page() {
         loading={loading}
         onEdit={handleEdit}
         onDelete={handleDelete}
+        rowKey="product_id"
       />
       <Pagination
         totalPages={totalPages}

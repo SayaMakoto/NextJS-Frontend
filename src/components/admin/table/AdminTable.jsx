@@ -6,6 +6,7 @@ export default function AdminTable({
   loading = false,
   onEdit,
   onDelete,
+  rowKey = "id",
 }) {
   return (
     <table className="w-full border-collapse">
@@ -35,7 +36,7 @@ export default function AdminTable({
           </tr>
         ) : (
           data.map((item) => (
-            <tr key={item.product_id} className="border-t">
+            <tr key={item[rowKey]} className="border-t">
               {columns.map((col) => (
                 <td key={col.key} className="p-3">
                   {col.render ? col.render(item) : item[col.key]}

@@ -8,7 +8,7 @@ export const getBrands = async (params = {}) => {
 };
 
 export const getBrandById = async (id) => {
-  const res = await axiosInstance.get(`/brand/${id}`);
+  const res = await axiosInstance.get(`/brands/${id}`);
   return res.data;
 };
 
